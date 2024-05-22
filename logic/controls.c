@@ -42,8 +42,8 @@ int	display_player_pos(t_game *game)
 
 void	portal(t_game *game)
 {
-	char	*path;
-	path = "./images_op_end/image_end.xpm";
+	//char	*path;
+	//path = "./images_op_end/image_end.xpm";
 	if (game->got_collectibles == game->nb_collectibles
 		&& game->map[game->player_pos_y][game->player_pos_x] == 'E')
 	{

@@ -96,53 +96,81 @@ int	calculate_len(t_game *game, char *line)
 //     return 1;
 // }
 
+
+// static int save_line_in_map(t_game *game, char *line)
+// {
+// 	char	**temporary;
+// 	int		i;
+
+// 	if (!line)
+// 		return (0);
+// 	i = 0;
+// 	 game->map_height++;
+// 	temporary = (char **)malloc(sizeof(char *) * ( game->map_height + 1));
+// 	temporary[ game->map_height] = NULL;
+// 	while (i <  game->map_height - 1)
+// 	{
+// 		temporary[i] = game->map[i];
+// 		i++;
+// 	}
+// 	temporary[i] = line;
+// 	if (game->map)
+// 		free(game->map);
+// 	game->map = temporary;
+// 	return (1);
+// }
+
 static int save_line_in_map(t_game *game, char *line)
 {
     char **temp;
     int i = 0;
 
+	//ft_printf("game map height %d \n\n", game->map_height);
+
     if (!line)
         return (0);
 
-    // Print statements for debugging
     ft_printf("save line in map\n");
     ft_printf("%s\n", line);
 
     game->map_height++;
     ft_printf("game map height %d \n\n", game->map_height);
-
-    // Allocate memory for temp with the new map height
     temp = (char **)malloc(sizeof(char *) * (game->map_height + 1));
-    if (!temp)
-    {
-        ft_printf("Memory allocation failed\n");
-        return (0); // Check for memory allocation failure
-    }
-
     temp[game->map_height] = NULL;
 
-    // Copy existing map lines to temp
     while (i < game->map_height - 1)
     {
+		ft_printf("MAP i am in map : %s\n", game->map[i]);
         temp[i] = game->map[i];
+		//ft_printf("TEMP i am in map : %s\n", temp[i]);
         i++;
     }
 
     // Assign the new line to temp
-    temp[i] = line;
+    temp[i] = ft_strdup(line);
+	i = 0;
+	while (i < game->map_height)
+    {
+        
+    	ft_printf("TEMP i am in map : %s\n", temp[i]);
+        i++;
+    }
     ft_printf("je suis ici %s\n", temp[i]);
 
-    // Free the old map array but not the individual lines, as they are now in temp
-    if (game->map != NULL)
+    if (game->map)
     {
         free(game->map);
         ft_printf("the map array has been freed\n");
     }
-
-    // Update the game's map with the new temp array
     game->map = temp;
-    ft_printf("i am in map : %s\n", game->map[0]);
 
+	i = 0;
+	 while (i < game->map_height)
+    {
+        
+    	ft_printf("LOOP i am in map : %s\n", game->map[i]);
+        i++;
+    }
     return (1);
 }
 
