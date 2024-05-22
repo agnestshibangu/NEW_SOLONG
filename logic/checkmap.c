@@ -79,7 +79,7 @@ static int	save_line_in_map(t_game *game, char *line)
 {
 	char	**temp;
 	int		i;
-	int 	nbr_of_lines;
+	// int 	nbr_of_lines;
 
 	if (!line)
 		return (0);
@@ -96,19 +96,9 @@ static int	save_line_in_map(t_game *game, char *line)
 	// free map 
 	if (game->map != NULL)
 	{
-		nbr_of_lines = 0;
-		while (game->map[nbr_of_lines])
-		{
-			free(game->map[nbr_of_lines]);
-			game->map[nbr_of_lines] = NULL;
-            nbr_of_lines++;
-		}
 		free(game->map);
 		game->map = NULL;
 	}
-	// if (game->map != NULL)
-	// 	free(game->map);
-	// free(line);
 	game->map = temp;
 	return (1);
 }

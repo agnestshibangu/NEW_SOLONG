@@ -12,32 +12,99 @@
 
 #include "get_next_line.h"
 
+void 	create_map(t_game *game) {
+   
+    int fd;
+    char *treated_line;
+    const char *name_file = "./ber_files/file2.ber";
 
-void	create_map(t_game *game)
-{
-	int		fd;
-	char	*treated_line;
-	char	*name_file;
+    //check_extension_file_name(name_file);
 
-	name_file = "./ber_files/file2.ber";
-	check_extension_file_name(name_file);
-	fd = open(name_file, O_RDONLY);
-	ft_memset(game, 0, sizeof(t_game));
-	treated_line = get_next_line(fd);
-	if (!treated_line)
-	{
-			close(fd);
-			// free(treated_line);
-			return ;
-	}
-	while (treated_line){
-		save_line_in_map(game, treated_line);
-		free(treated_line);
-		treated_line = get_next_line(fd);	
-	}
-	free(treated_line);
-	close(fd);
+    fd = open(name_file, O_RDONLY);
+    if (fd < 0) {
+        return;
+    }
+    memset(game, 0, sizeof(t_game));
+    treated_line = get_next_line(fd);
+    if (!treated_line) {
+        close(fd);
+        return;
+    }
+    while (treated_line) {
+        save_line_in_map(game, treated_line);
+		ft_printf("\n");
+		ft_printf("treated line : ");
+		ft_printf(treated_line);
+        //free(treated_line); // Free the line after saving it to the map
+		ft_printf("\n");
+		ft_printf("free line : ");
+		ft_printf(treated_line);
+        treated_line = get_next_line(fd);
+    }
+    close(fd);
 }
+// void	create_map(t_game *game)
+// {
+// 	int		fd;
+// 	char	*treated_line;
+// 	char	*name_file;
+
+// 	name_file = "./ber_files/file2.ber";
+// 	check_extension_file_name(name_file);
+// 	fd = open(name_file, O_RDONLY);
+// 	ft_memset(game, 0, sizeof(t_game));
+// 	treated_line = get_next_line(fd);
+// 	if (!treated_line)
+// 	{
+// 			close(fd);
+// 			return ;
+// 	}
+// 	while (treated_line){
+// 		save_line_in_map(game, treated_line);
+// 		free(treated_line);
+// 		treated_line = get_next_line(fd);	
+// 	}
+// 	//free(treated_line);
+// 	close(fd);
+// }
+
+// void	create_map(t_game *game)
+// {
+// 	int		fd;
+// 	char	*treated_line;
+// 	char	*name_file;
+
+// 	name_file = "./ber_files/file2.ber";
+// 	check_extension_file_name(name_file);
+// 	fd = open(name_file, O_RDONLY);
+// 	ft_memset(game, 0, sizeof(t_game));
+// 	treated_line = get_next_line(fd);
+// 	while (1){
+// 		treated_line = get_next_line(fd);
+// 		save_line_in_map(game, treated_line);
+// 		if (!treated_line)
+// 		{
+// 			close(fd);
+// 			free(treated_line);
+// 			//get_next_line(-1);
+// 			break ;
+// 		}	
+// 	}
+
+	// if (!treated_line)
+	// {
+	// 		close(fd);
+	// 		// free(treated_line);
+	// 		return ;
+	// }
+	// while (treated_line){
+	// 	save_line_in_map(game, treated_line);
+	// 	free(treated_line);
+	// 	treated_line = get_next_line(fd);	
+	// }
+	// free(treated_line);
+	// close(fd);
+//}
 
 // while (1){
 	// 	treated_line = get_next_line(fd);

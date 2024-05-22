@@ -8,8 +8,7 @@ int main() {
 
     t_game  game;
 
-    malloc_game(&game);
-    calculate_height_map(&game);
+   
     // - FLOOD FILL CHECK - //
     check_flood_fill_map(&game);
 
