@@ -56,9 +56,6 @@ void	display_image_before(t_game *game, char *path)
 	void	*img;
 	img = mlx_xpm_file_to_image(game->mlx, path, &game->win_w, &game->win_h);
 	if (!img){
-		//ft_printf("destroy successful");
-		mlx_destroy_window(game->mlx, game->win);
-		mlx_destroy_display(game->mlx);
 		return ;
 	}
 	mlx_put_image_to_window(game->mlx, game->win, img, 0, 0);
@@ -78,7 +75,7 @@ void	window_init(t_game *game)
 	win_h = game->map_height * 31;
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, win_w, win_h, "game map");
-	ft_printf("window size");
+	//ft_printf("window size");
 }
 
 void	init_images_character(t_game *game)

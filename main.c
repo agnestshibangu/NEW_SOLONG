@@ -22,9 +22,9 @@ int main() {
     init_images_character(&game);
     init_images_obj(&game);
    
-    char *path = "./images_op_end/first_image.xpm";
+    // char *path = "./images_op_end/first_image.xpm";
 
-    display_image_before(&game, path);
+    //display_image_before(&game, path);
 
     display_player_pos(&game);
   

@@ -119,19 +119,18 @@ int	free_game(t_game *game)
 	if (game->win != NULL)
 	{
 		mlx_destroy_window(game->mlx, game->win);
-		game->win = NULL;
+		free(game->win);
 		ft_printf("window destroyed !\n");
 	}
 	if (game->mlx != NULL)
 	{
-        //free(game->mlx);
 		mlx_destroy_display(game->mlx);
     	ft_printf("mlx destroy successfully\n");
 		free(game->mlx);
-		//game->mlx = NULL;
+		game->mlx = NULL;
 	}
-    free(game);
-    game = NULL;
+    // free(game);
+    // game = NULL;
     ft_printf("free game successful");
 	exit (0);
 }
