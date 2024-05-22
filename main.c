@@ -10,8 +10,9 @@ int main() {
 
    
     // - FLOOD FILL CHECK - //
-    check_flood_fill_map(&game);
 
+    check_flood_fill_map(&game);
+    // ft_printf("coucou");
     // - INIT GAME -// 
     create_map(&game);
     calculate_len(&game, game.map[0]);

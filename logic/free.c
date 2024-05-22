@@ -139,9 +139,10 @@ int	free_game(t_game *game)
 		free(game->mlx);
 		game->mlx = NULL;
 	}
-    free(game);
-    game = NULL;
+    // free(game);
+    // game = NULL;
     ft_printf("free game successful");
 	exit (0);
+    //return (0);
 }
 
