@@ -116,6 +116,7 @@ void    count_collectibles(t_game *game);
 void    window_init(t_game *game);
 
 // floodfill
+void 	display_map(t_game *game);
 void    map_len(t_game *game);
 void	flood_map(t_game *game, int x, int y);
 int     check_flood_fill(t_game *game);

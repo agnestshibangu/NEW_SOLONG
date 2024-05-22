@@ -75,33 +75,60 @@ int	calculate_len(t_game *game, char *line)
 }
 
 // ALLOC
-static int	save_line_in_map(t_game *game, char *line)
-{
-	char	**temp;
-	int		i;
-	// int 	nbr_of_lines;
+static int save_line_in_map(t_game *game, char *line) {
+    char **new_map;
 
-	if (!line)
-		return (0);
-	i = 0;
-	game->map_height++;
-	temp = (char **)malloc(sizeof(char *) * (game->map_height + 1));
-	temp[game->map_height] = NULL;
-	while (i < game->map_height - 1)
-	{
-		temp[i] = game->map[i];
-		i++;
-	}
-	temp[i] = line;
-	// free map 
-	if (game->map != NULL)
-	{
-		free(game->map);
-		game->map = NULL;
-	}
-	game->map = temp;
-	return (1);
+    if (!line)
+        return 0;
+
+    // Increment map height
+    game->map_height++;
+
+    // Reallocate memory for the map to accommodate the new line
+    new_map = (char **)realloc(game->map, sizeof(char *) * game->map_height);
+    if (!new_map)
+        return 0; // Memory reallocation failed
+
+    new_map[game->map_height - 1] = ft_strdup(line); 
+
+    game->map = new_map;
+
+    return 1;
 }
+
+// static int	save_line_in_map(t_game *game, char *line)
+// {
+// 	char	**temp;
+// 	int		i;
+// 	int 	nbr_of_lines;
+
+// 	if (!line)
+// 		return (0);
+// 	i = 0;
+// 	game->map_height++;
+// 	temp = (char **)malloc(sizeof(char *) * (game->map_height + 1));
+// 	temp[game->map_height] = NULL;
+// 	while (i < game->map_height - 1)
+// 	{
+// 		temp[i] = game->map[i];
+// 		i++;
+// 	}
+// 	temp[i] = line;
+// 	// free map 
+// 	if (game->map != NULL)
+// 	{
+// 		nbr_of_lines = 0;
+// 		while (game->map[nbr_of_lines])
+// 		{
+// 			free(game->map[nbr_of_lines]);
+// 			game->map[nbr_of_lines] = NULL;
+//             nbr_of_lines++;
+// 		}
+// 		free(game->map);
+// 	}
+// 	game->map = temp;
+// 	return (1);
+// }
 
 int	check_rectangle(t_game *game)
 {

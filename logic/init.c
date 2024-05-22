@@ -32,17 +32,34 @@ void 	create_map(t_game *game) {
     }
     while (treated_line) {
         save_line_in_map(game, treated_line);
-		ft_printf("\n");
-		ft_printf("treated line : ");
-		ft_printf(treated_line);
-        //free(treated_line); // Free the line after saving it to the map
-		ft_printf("\n");
-		ft_printf("free line : ");
-		ft_printf(treated_line);
+        free(treated_line); // Free the line after saving it to the map
         treated_line = get_next_line(fd);
     }
     close(fd);
 }
+
+void 	display_map(t_game *game)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	while (y < game->map_height)
+	{
+		x = 0;
+		while (x < game->map_width - 1)
+		{
+			ft_printf("%c", game->map[y][x]);
+			x++;
+		}
+		ft_printf("\n");
+		y++;
+	}
+}
+
+
+
+
 // void	create_map(t_game *game)
 // {
 // 	int		fd;

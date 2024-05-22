@@ -18,6 +18,8 @@ int	display_player_pos(t_game *game)
 	int	y;
 
 	y = 0;
+	// ft_printf("WIDTH %d", game->map_width);
+	// ft_printf("HEIGHT %d", game->map_height);
 	while (y < game->map_height)
 	{
 		x = 0;
@@ -35,6 +37,7 @@ int	display_player_pos(t_game *game)
 		y++;
 	}
 	return (1);
+	
 }
 
 void	portal(t_game *game)

@@ -13,19 +13,22 @@
 #include "get_next_line.h"
 
 // FREE
-int	map_free_after_flood_fill(t_game *game)
-{
-	int	nbr_of_lines;
 
-	nbr_of_lines = 0;
-	if (game->map != NULL)
-	{
-		while (game->map[nbr_of_lines++])
-			free(game->map[nbr_of_lines]);
-		free(game->map);
-	}
-	ft_memset(game, 0, sizeof(t_game));
-	return (0);
+int map_free_after_flood_fill(t_game *game) {
+    int nbr_of_lines = 0;
+
+    ft_printf("\nFreeing game map:\n");
+    if (game->map != NULL) {
+        while (nbr_of_lines < game->map_height) {
+            ft_printf("Freeing line %d: %s\n", nbr_of_lines, game->map[nbr_of_lines]);
+            free(game->map[nbr_of_lines]);
+            game->map[nbr_of_lines] = NULL;
+            nbr_of_lines++;
+        }
+        ft_printf("All lines freed.\n");
+        free(game->map);
+    }
+    return 0;
 }
 
 void	map_len(t_game *game)
@@ -36,12 +39,11 @@ void	map_len(t_game *game)
 	while (game->map[0][len])
 		len++;
 	game->map_width = len;
-	ft_printf("map len : %d", game->map_width);
 }
 
 void	flood_map(t_game *game, int x, int y)
 {
-	if (game->map[y][x] == '1' || game->map[y][x] == 'F')
+	if (game->map[y][x] == 'P' || game->map[y][x] == '1' || game->map[y][x] == 'F')
 		return ;
 	game->map[y][x] = 'F';
 	flood_map(game, x, y + 1);
@@ -58,9 +60,10 @@ int	check_flood_fill(t_game *game)
 	i = 0;
 	j = 0;
 	flood_map(game, game->player_pos_x, game->player_pos_y);
-	while (game->map[i])
+	ft_printf("flood map done\n");
+	while (i < game->map_height)
 	{
-		while (game->map[i][j])
+		while (j < game->map_width)
 		{
 			if (game->map[i][j] == 'C' || game->map[i][j] == 'E')
 			{
@@ -80,10 +83,13 @@ int	check_flood_fill(t_game *game)
 
 int	check_flood_fill_map(t_game *game)
 {
-	ft_printf("coucou");
 	create_map(game);
 	map_len(game);
+	ft_printf("displaying map \n");
+	display_map(game);
 	display_player_pos(game);
+	ft_printf("height %d\n", game->map_height);
+	ft_printf("width %d\n", game->map_width);
 	flood_map(game, game->player_pos_x, game->player_pos_y);
 	check_flood_fill(game);
 	map_free_after_flood_fill(game);
