@@ -17,15 +17,14 @@
 int map_free_after_flood_fill(t_game *game) {
     int nbr_of_lines = 0;
 
-    ft_printf("\nFreeing game map:\n");
     if (game->map != NULL) {
         while (nbr_of_lines < game->map_height) {
-            ft_printf("Freeing line %d: %s\n", nbr_of_lines, game->map[nbr_of_lines]);
+            //ft_printf("Freeing line %d: %s\n", nbr_of_lines, game->map[nbr_of_lines]);
             free(game->map[nbr_of_lines]);
             game->map[nbr_of_lines] = NULL;
             nbr_of_lines++;
         }
-        ft_printf("All lines freed.\n");
+        // ft_printf("All lines freed.\n");
         free(game->map);
     }
     return 0;
