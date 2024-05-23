@@ -117,7 +117,6 @@ static int save_line_in_map(t_game *game, char *line)
         free(game->map);
 	// pass content of temp in game->map
     game->map = temp;
-	
     return (1);
 }
 

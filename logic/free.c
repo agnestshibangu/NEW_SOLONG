@@ -91,8 +91,6 @@ void free_images(t_game *game) {
     }
 }
 
-
-
 // FREE 
 int	free_game(t_game *game)
 {
@@ -111,25 +109,12 @@ int	free_game(t_game *game)
             nbr_of_lines++;
         }
         ft_printf("All lines freed.\n");
-        // free(game->map);
+        free(game->map);
     }
-	// if (game->map != NULL)
-	// {
-	// 	while (game->map[nbr_of_lines])
-	// 	{
-	// 		free(game->map[nbr_of_lines]);
-	// 		game->map[nbr_of_lines] = NULL;
-    //         nbr_of_lines++;
-	// 	}
-	// 	free(game->map);
-	// 	game->map = NULL;
-	// 	ft_printf("game map freed successfully\n");
-	// }
 	free_images(game);
 	if (game->win != NULL)
 	{
 		mlx_destroy_window(game->mlx, game->win);
-		//free(game->win);
 		ft_printf("window destroyed !\n");
 	}
 	if (game->mlx != NULL)
@@ -140,7 +125,7 @@ int	free_game(t_game *game)
 		game->mlx = NULL;
 	}
     //free(game);
-    // game = NULL;
+    //game = NULL;
     ft_printf("free game successful");
 	exit (0);
     //return (0);
