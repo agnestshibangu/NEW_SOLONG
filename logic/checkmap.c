@@ -80,45 +80,56 @@ static int save_line_in_map(t_game *game, char *line)
 {
     char **temp;
     int i = 0;
+	
 
     if (!line)
         return (0);
-
-    ft_printf("save line in map\n");
-    ft_printf("%s\n", line);
-
     game->map_height++;
-    ft_printf("game map height %d \n\n", game->map_height);
     temp = (char **)malloc(sizeof(char *) * (game->map_height + 1));
+	 if (!temp)
+        return (0);
     temp[game->map_height] = NULL;
 
     while (i < game->map_height - 1)
     {
-		ft_printf("MAP i am in map : %s\n", game->map[i]);
         temp[i] = game->map[i];
         i++;
     }
-    temp[i] = ft_strdup(line);
+	temp[i] = ft_strdup(line);
+	if (!temp[i])
+	{
+    // If strdup fails, free the already allocated memory
+    // while (i <  game->map_height)
+	// {
+	// 	free(temp[i]);
+	// 	i++;
+	// }  
+    free(temp);
+    return (0);
+	}
+	
 	i = 0;
 	while (i < game->map_height)
-    {
-        
-    	ft_printf("TEMP i am in map : %s\n", temp[i]);
         i++;
-    }
-    ft_printf("je suis ici %s\n", temp[i]);
-    if (game->map)
-    {
+	if (game->map)
         free(game->map);
-        ft_printf("the map array has been freed\n");
-    }
+
     game->map = temp;
-	i = 0;
-	 while (i < game->map_height)
-    {   
-    	ft_printf("LOOP i am in map : %s\n", game->map[i]);
-        i++;
+
+	// FREE TEMP
+	if (!temp[i])
+    {
+        //If strdup fails
+		i = 0; 
+        while (i < game->map_height - 1)
+		{
+			free(temp[i]);
+			i++;
+		}   
+        free(temp);
+        return (0);
     }
+	i = 0;
     return (1);
 }
 
