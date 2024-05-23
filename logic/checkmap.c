@@ -85,53 +85,42 @@ static int save_line_in_map(t_game *game, char *line)
     if (!line)
         return (0);
     game->map_height++;
+	// allocating temp to size of map plus NULL
     temp = (char **)malloc(sizeof(char *) * (game->map_height + 1));
 	 if (!temp)
         return (0);
-    temp[game->map_height] = NULL;
+    temp[game->map_height - 1] = NULL;
 
+	// while map, pass everything in temp
     while (i < game->map_height - 1)
     {
         temp[i] = game->map[i];
         i++;
     }
+	// pass new line in temp
 	temp[i] = ft_strdup(line);
+	// if temp NULL, free temp
 	if (!temp[i])
 	{
-    // If strdup fails, free the already allocated memory
-    // while (i <  game->map_height)
-	// {
-	// 	free(temp[i]);
-	// 	i++;
-	// }  
-    free(temp);
-    return (0);
+    	//If strdup fails, free the already allocated memory
+		int y = 0;
+		while (y < game->map_height)
+		{
+			free(temp[y]);
+			y++;
+		}  
+		free(temp);
+		return (0);
 	}
-	
-	i = 0;
-	while (i < game->map_height)
-        i++;
+	// free game
 	if (game->map)
         free(game->map);
-
+	// pass content of temp in game->map
     game->map = temp;
-
-	// FREE TEMP
-	if (!temp[i])
-    {
-        //If strdup fails
-		i = 0; 
-        while (i < game->map_height - 1)
-		{
-			free(temp[i]);
-			i++;
-		}   
-        free(temp);
-        return (0);
-    }
-	i = 0;
+	
     return (1);
 }
+
 
 int	check_rectangle(t_game *game)
 {

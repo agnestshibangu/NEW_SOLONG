@@ -34,7 +34,7 @@ void 	create_map(t_game *game) {
         return;
     }
     while (treated_line) {
-		ft_printf("\n \n LOOP N %d \n", i);
+		// ft_printf("\n \n LOOP N %d \n", i);
         save_line_in_map(game, treated_line);
         free(treated_line); // Free the line after saving it to the map
         treated_line = get_next_line(fd);
