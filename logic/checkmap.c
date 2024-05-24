@@ -12,17 +12,26 @@
 
 #include "get_next_line.h"
 
-void	*ft_memset(void *b, int c, size_t length)
+int	check_extension_file_name(char *name)
 {
-	unsigned char	*p;
+	int			i;
+	int			y;
+	const char	*needle;
 
-	p = (unsigned char *)b;
-	while (length--)
+	i = 0;
+	y = 0;
+	needle = ".ber";
+	while (name[i])
 	{
-		*p++ = (unsigned char)c;
+		if (name[i] == needle[y])
+			y++;
+		i++;
 	}
-	return (b);
+	if (y == 4 && name[i] == '\0')
+		ft_printf("extension ok\n");
+	return (0);
 }
+
 
 void 	calculate_height_map(t_game *game)
 {
@@ -75,51 +84,6 @@ int	calculate_len(t_game *game, char *line)
 }
 
 // ALLOC
-
-static int save_line_in_map(t_game *game, char *line)
-{
-    char **temp;
-    int i = 0;
-	
-
-    if (!line)
-        return (0);
-    game->map_height++;
-	// allocating temp to size of map plus NULL
-    temp = (char **)malloc(sizeof(char *) * (game->map_height + 1));
-	 if (!temp)
-        return (0);
-    temp[game->map_height - 1] = NULL;
-
-	// while map, pass everything in temp
-    while (i < game->map_height - 1)
-    {
-        temp[i] = game->map[i];
-        i++;
-    }
-	// pass new line in temp
-	temp[i] = ft_strdup(line);
-	// if temp NULL, free temp
-	if (!temp[i])
-	{
-    	//If strdup fails, free the already allocated memory
-		int y = 0;
-		while (y < game->map_height)
-		{
-			free(temp[y]);
-			y++;
-		}  
-		free(temp);
-		return (0);
-	}
-	// free game
-	if (game->map)
-        free(game->map);
-	// pass content of temp in game->map
-    game->map = temp;
-    return (1);
-}
-
 
 int	check_rectangle(t_game *game)
 {

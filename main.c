@@ -9,27 +9,15 @@ int main() {
     t_game  game;
     
     // - FLOOD FILL CHECK - //
-    check_flood_fill_map(&game);
-
+    if (!check_flood_fill_map(&game))
+        return (0);
     // - CREATE THE MAP -// 
-    create_map(&game);
-    map_len(&game);
-    check_map(&game);
-    count_collectibles(&game);
-
+    if (!create_map_for_game(&game))
+        return (0);
     // - INIT WINDOW AND IMAGES - // 
-    window_init(&game);
-    init_images_character(&game);
-    init_images_obj(&game);
-    display_player_pos(&game);
-   
-    // char *path = "./images_op_end/first_image.xpm";
-    //display_image_before(&game, path);
-
+    initialize_window(&game);
     // - DRAWING GRID AND LOOPING TILL END - // 
-    drawGrid(&game);    
-    mlx_key_hook(game.win, controls_working, &game);    
-    mlx_loop(game.mlx);
+    run_game(&game);
     
     return 0;
 }

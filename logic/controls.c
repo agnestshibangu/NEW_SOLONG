@@ -12,30 +12,6 @@
 
 #include "get_next_line.h"
 
-int	display_player_pos(t_game *game)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (y < game->map_height)
-	{
-		x = 0;
-		while (x < game->map_width - 1)
-		{
-			if (game->map[y][x] == 'P')
-			{
-				game->player_pos_x = x;
-				game->player_pos_y = y;
-				game->map[y][x] = '0';
-				return (1);
-			}
-			x++;
-		}
-		y++;
-	}
-	return (0);
-}
 
 void	portal(t_game *game)
 {

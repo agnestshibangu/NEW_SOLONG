@@ -80,3 +80,10 @@ int	controls_working(int command, t_game *game)
 	}
 	return (1);
 }
+
+void 	run_game(t_game *game)
+{
+	drawGrid(game);    
+    mlx_key_hook(game->win, controls_working, game);    
+    mlx_loop(game->mlx);
+}

@@ -13,7 +13,6 @@
 #include "get_next_line.h"
 
 // FREE
-
 int map_free_after_flood_fill(t_game *game) {
     int nbr_of_lines = 0;
 
@@ -28,19 +27,6 @@ int map_free_after_flood_fill(t_game *game) {
         free(game->map);
     }
     return (1);
-}
-
-int		map_len(t_game *game)
-{
-	int	len;
-
-	len = 0;
-	while (game->map[0][len])
-		len++;
-	if (len < 3)
-		return (0);
-	game->map_width = len;
-	return (1);
 }
 
 void	flood_map(t_game *game, int x, int y)

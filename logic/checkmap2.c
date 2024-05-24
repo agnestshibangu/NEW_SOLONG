@@ -70,7 +70,7 @@ int	check_allowed_caracters(t_game *game)
 	return (1);
 }
 
-int	check_if_rectancle(t_game *game)
+int		check_if_rectangle(t_game *game)
 {
 	int	init_len;
 	int	y;
@@ -97,22 +97,3 @@ int	check_if_rectancle(t_game *game)
 	return (1);
 }
 
-int	check_extension_file_name(char *name)
-{
-	int			i;
-	int			y;
-	const char	*needle;
-
-	i = 0;
-	y = 0;
-	needle = ".ber";
-	while (name[i])
-	{
-		if (name[i] == needle[y])
-			y++;
-		i++;
-	}
-	if (y == 4 && name[i] == '\0')
-		ft_printf("extension ok\n");
-	return (0);
-}

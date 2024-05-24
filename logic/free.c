@@ -91,7 +91,7 @@ void free_images(t_game *game) {
     }
 }
 
-// FREE 
+// FREE - debbug I need to find a solution to free the game 
 int	free_game(t_game *game)
 {
 	int	nbr_of_lines;
@@ -124,8 +124,6 @@ int	free_game(t_game *game)
 		free(game->mlx);
 		game->mlx = NULL;
 	}
-    //free(game);
-    //game = NULL;
     ft_printf("free game successful");
 	exit (0);
     //return (0);
