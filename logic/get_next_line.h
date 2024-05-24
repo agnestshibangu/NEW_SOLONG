@@ -71,6 +71,7 @@ typedef struct s_game
 #include "./gnl.c"
 
 #include "./init.c"
+#include "./init_window.c"
 
 #include "./checkmap.c"
 #include "./checkmap2.c"

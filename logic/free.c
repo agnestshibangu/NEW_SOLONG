@@ -12,34 +12,6 @@
 
 #include "get_next_line.h"
 
-// void 	free_images(t_game *game)
-// {
-// 	mlx_destroy_image(game->mlx, game->img.x_p_c);
-// 	mlx_destroy_image(game->mlx, game->img.x_p_c_rr);
-// 	mlx_destroy_image(game->mlx, game->img.x_p_c_u);
-// 	mlx_destroy_image(game->mlx, game->img.x_p_c_uu);
-// 	mlx_destroy_image(game->mlx, game->img.x_p_c_l);
-// 	mlx_destroy_image(game->mlx, game->img.x_p_c_ll);
-// 	mlx_destroy_image(game->mlx, game->img.x_p_c_d);
-// 	mlx_destroy_image(game->mlx, game->img.x_p_c_dd);
-// 	mlx_destroy_image(game->mlx, game->img.xpw);
-// 	mlx_destroy_image(game->mlx, game->img.xpg);
-// 	mlx_destroy_image(game->mlx, game->img.xpcoll);
-// 	mlx_destroy_image(game->mlx, game->img.xpd);
-// 	mlx_destroy_image(game->mlx, game->img.x_i_c);
-// 	mlx_destroy_image(game->mlx, game->img.x_i_c_rr);
-// 	mlx_destroy_image(game->mlx, game->img.x_i_c_u);
-// 	mlx_destroy_image(game->mlx, game->img.x_i_c_uu);
-// 	mlx_destroy_image(game->mlx, game->img.x_i_c_l);
-// 	mlx_destroy_image(game->mlx, game->img.x_i_c_ll);
-// 	mlx_destroy_image(game->mlx, game->img.x_i_c_d);
-// 	mlx_destroy_image(game->mlx, game->img.x_i_c_dd);
-// 	mlx_destroy_image(game->mlx, game->img.xiwal);
-// 	mlx_destroy_image(game->mlx, game->img.xigro);
-// 	mlx_destroy_image(game->mlx, game->img.xicol);
-// 	mlx_destroy_image(game->mlx, game->img.xidoo);
-// }
-
 void free_images(t_game *game) {
     if (game->img.x_i_c) {
         mlx_destroy_image(game->mlx, game->img.x_i_c);
