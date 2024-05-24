@@ -12,6 +12,10 @@
 
 int	check_map(t_game *game)
 {
+	if(!check_walls_horizontal(game))
+	{
+		return (0);
+	}
 	check_walls_horizontal(game);
 	check_walls_vertical(game);
 	check_allowed_caracters(game);

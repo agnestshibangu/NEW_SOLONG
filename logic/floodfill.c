@@ -27,17 +27,20 @@ int map_free_after_flood_fill(t_game *game) {
         // ft_printf("All lines freed.\n");
         free(game->map);
     }
-    return 0;
+    return (1);
 }
 
-void	map_len(t_game *game)
+int		map_len(t_game *game)
 {
 	int	len;
 
 	len = 0;
 	while (game->map[0][len])
 		len++;
+	if (len < 3)
+		return (0);
 	game->map_width = len;
+	return (1);
 }
 
 void	flood_map(t_game *game, int x, int y)
@@ -67,7 +70,7 @@ int	check_flood_fill(t_game *game)
 			if (game->map[i][j] == 'C' || game->map[i][j] == 'E')
 			{
 				ft_printf(" ! error flood fill error ! ");
-				return (-1);
+				return (0);
 			}
 			ft_printf("%c", game->map[i][j]);
 			j++;
@@ -77,22 +80,38 @@ int	check_flood_fill(t_game *game)
 	}
 	ft_printf("\n");
 	ft_printf("CHECK FLOOD FILL DONE \n");
-	return (0);
+	return (1);
 }
 
 int	check_flood_fill_map(t_game *game)
 {
-	create_map(game);
-	map_len(game);
-	ft_printf("displaying map \n");
-	display_map(game);
-	display_player_pos(game);
-	ft_printf("height %d\n", game->map_height);
-	ft_printf("width %d\n", game->map_width);
+	if (!create_map(game))
+	{
+		ft_printf("Error: Failed to create map\n");
+		return (0);
+	}
+	if (!map_len(game))
+	{
+		ft_printf("Error: Failed to calculate map length\n");
+		return (0);
+	}
+	if (!display_player_pos(game))
+	{
+		ft_printf("Error: Failed to retreive player position\n");
+		return (0);
+	}
 	flood_map(game, game->player_pos_x, game->player_pos_y);
-	check_flood_fill(game);
-	map_free_after_flood_fill(game);
-	ft_printf("\n");
+	if (!check_flood_fill(game))
+	{
+		ft_printf("Error: Failed to check flood fill\n");
+        return (0);
+	}
+	if (!map_free_after_flood_fill(game))
+	{
+		ft_printf("Error: Failed to free map after flood fill\n");
+        return (0);
+	}
+
 	ft_printf(" !!! check flood fill DONE !!!");
 	return (1);
 }

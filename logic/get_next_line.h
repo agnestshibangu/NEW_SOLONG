@@ -110,14 +110,14 @@ void 	init_images_character(t_game *game);
 void init_images_obj(t_game *game);
 
 // map
-void    create_map(t_game *game);
+int    create_map(t_game *game);
 void    drawGrid(t_game *game);
 void    count_collectibles(t_game *game);
 void    window_init(t_game *game);
 
 // floodfill
 void 	display_map(t_game *game);
-void    map_len(t_game *game);
+int    map_len(t_game *game);
 void	flood_map(t_game *game, int x, int y);
 int     check_flood_fill(t_game *game);
 int     map_free_after_flood_fill(t_game *game);

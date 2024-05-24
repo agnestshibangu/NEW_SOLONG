@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-void 	create_map(t_game *game) {
+int 	create_map(t_game *game) {
    
     int fd;
     char *treated_line;
@@ -20,27 +20,24 @@ void 	create_map(t_game *game) {
 	int i;
 
 	i = 0;
-
-    //check_extension_file_name(name_file);
-
     fd = open(name_file, O_RDONLY);
     if (fd < 0) {
-        return;
+        return (0);
     }
     memset(game, 0, sizeof(t_game));
     treated_line = get_next_line(fd);
     if (!treated_line) {
         close(fd);
-        return;
+        return (0);
     }
     while (treated_line) {
-		// ft_printf("\n \n LOOP N %d \n", i);
         save_line_in_map(game, treated_line);
-        free(treated_line); // Free the line after saving it to the map
+        free(treated_line);
         treated_line = get_next_line(fd);
 		i++;
     }
     close(fd);
+	return (1);
 }
 
 void 	display_map(t_game *game)

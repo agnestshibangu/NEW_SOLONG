@@ -7,30 +7,28 @@
 int main() {
 
     t_game  game;
-
-   
+    
     // - FLOOD FILL CHECK - //
     check_flood_fill_map(&game);
 
-    // - INIT GAME -// 
+    // - CREATE THE MAP -// 
     create_map(&game);
-    calculate_len(&game, game.map[0]);
+    map_len(&game);
     check_map(&game);
     count_collectibles(&game);
+
+    // - INIT WINDOW AND IMAGES - // 
     window_init(&game);
     init_images_character(&game);
     init_images_obj(&game);
+    display_player_pos(&game);
    
     // char *path = "./images_op_end/first_image.xpm";
-
     //display_image_before(&game, path);
 
-    display_player_pos(&game);
-  
-    drawGrid(&game);
-    
+    // - DRAWING GRID AND LOOPING TILL END - // 
+    drawGrid(&game);    
     mlx_key_hook(game.win, controls_working, &game);    
-
     mlx_loop(game.mlx);
     
     return 0;

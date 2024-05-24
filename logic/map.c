@@ -85,4 +85,32 @@ void	count_collectibles(t_game *game)
 		}
 		y++;
 	}
+	if (game->nb_collectibles < 1)
+	{
+		return (0);
+	}
+	return (1);
+}
+
+
+int 	create_map_for_game(t_game *game)
+{
+	if (!create_map(game))
+	{
+		ft_printf("Error: Failed to create map\n");
+		return (0);
+	}
+    if (!map_len(game))
+	{
+		ft_printf("Error: Failed to calculate map length\n");
+		return (0);
+	}
+    check_map(&game);
+    if (!count_collectibles(game))
+	{
+		ft_printf("Error: Not enought collectibles\n");
+		return (0);
+	}
+	ft_printf(" !!! creating the map DONE !!!");
+	return (1);
 }
