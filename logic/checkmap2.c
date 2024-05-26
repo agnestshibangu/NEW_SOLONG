@@ -21,10 +21,12 @@ int	check_walls_horizontal(t_game *game)
 	len = game->map_width;
 	height = game->map_height;
 	i = 0;
-	while (i < len)
+	while (i < len - 1)
 	{
-		if (game->map[height - 1][i] != '1' || game->map[0][i] != '1')
+		if (game->map[0][i] != '1' || game->map[height - 1][i] != '1')
+		{
 			return (0);
+		}
 		i++;
 	}
 	return (1);
@@ -80,24 +82,19 @@ int		check_if_rectangle(t_game *game)
 	int	y;
 	int	x;
 
-	init_len = 0;
-	y = 1;
-	while (game->map[0][init_len])
-		init_len++;
-	while (y < game->map_height)
+	init_len = game->map_width - 1;
+
+	y = 0;
+	while (y < game->map_height - 1)
 	{
 		x = 0;
-		while (game->map[y][x])
+		while (x < init_len)
 			x++;
 		if (x != init_len)
 			return (0);
 		y++;
 	}
 	x = 0;
-	while (game->map[game->map_height - 1][x])
-		x++;
-	if (x != init_len + 1)
-		return (0);
 	return (1);
 }
 

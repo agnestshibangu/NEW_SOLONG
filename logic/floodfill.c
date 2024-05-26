@@ -55,7 +55,7 @@ int	check_flood_fill(t_game *game)
 		{
 			if (game->map[i][j] == 'C' || game->map[i][j] == 'E')
 			{
-				ft_printf(" ! error flood fill error ! ");
+				// ft_printf(" ! error flood fill error ! ");
 				return (0);
 			}
 			ft_printf("%c", game->map[i][j]);
@@ -81,6 +81,12 @@ int	check_flood_fill_map(t_game *game, t_gamefile *gamefile)
 		ft_printf("Error: Failed to calculate map length\n");
 		return (0);
 	}
+	if (!check_map(game))
+	{
+		fflush(stdout);
+		ft_printf("Error: Found error while checking map\n");
+		return (0);
+	}
 	if (!display_player_pos(game))
 	{
 		ft_printf("Error: Failed to retreive player position\n");
@@ -89,7 +95,7 @@ int	check_flood_fill_map(t_game *game, t_gamefile *gamefile)
 	flood_map(game, game->player_pos_x, game->player_pos_y);
 	if (!check_flood_fill(game))
 	{
-		ft_printf("Error: Failed to check flood fill\n");
+		ft_printf("Error: Failed flood map\n");
         return (0);
 	}
 	if (!map_free_after_flood_fill(game))

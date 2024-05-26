@@ -127,6 +127,7 @@ void	malloc_game(t_game *game);
 int 	create_map(t_game *game, t_gamefile *gamefile);
 void    drawGrid(t_game *game);
 int     count_collectibles(t_game *game);
+int     count_exit_and_caracter(t_game *game);
 void    window_init(t_game *game);
 int 	create_map_for_game(t_game *game, t_gamefile *gamefile);
 

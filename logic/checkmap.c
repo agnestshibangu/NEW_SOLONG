@@ -44,7 +44,7 @@ void 	calculate_height_map(t_game *game)
 	name_file = "./ber_files/file2.ber";
 	check_extension_file_name(name_file);
 	fd = open(name_file, O_RDONLY);
-	// ft_memset(game, 0, sizeof(t_game));
+	ft_memset(game, 0, sizeof(t_game));
 	treated_line = get_next_line(fd);	
 	if (!treated_line)
 	{
@@ -57,7 +57,7 @@ void 	calculate_height_map(t_game *game)
 		treated_line = get_next_line(fd);	
 	}
 	game->map_height = height;
-	ft_printf("%d\n",height);
+	// ft_printf("%d\n",height);
 	close(fd);
 }
 
@@ -81,18 +81,4 @@ int	calculate_len(t_game *game, char *line)
 		len++;
 	game->map_width = len;
 	return (0);
-}
-
-// ALLOC
-
-int	check_rectangle(t_game *game)
-{
-	int	height;
-	int	i;
-
-	height = game->map_height;
-	i = 0;
-	while (i < height)
-		i++;
-	return (1);
 }

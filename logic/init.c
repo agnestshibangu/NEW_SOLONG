@@ -78,15 +78,6 @@ int 	create_map(t_game *game, t_gamefile *gamefile) {
 
 	i = 0;
     fd = open(gamefile->map_file, O_RDONLY);
-	// ft_printf("\nname file\n");
-	// ft_printf(name_file);
-	// ft_printf("\n");
-	ft_printf("file in map\n");
-	ft_printf(gamefile->map_file);
-	ft_printf("\n");
-	
-	//fd = open(name_file, O_RDONLY);
-	//ft_printf(game->map_file);
     if (fd < 0) {
         return (0);
     }

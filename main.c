@@ -18,10 +18,7 @@ int main(int ac, char **av) {
         if (!check_extension_file_name(av[1]))
             ft_printf("file incorrect");
         else 
-        {
-            ft_printf("file correct");
             gamefile.map_file = av[1];
-        }
     }
 
     // - FLOOD FILL CHECK - //
