@@ -44,6 +44,11 @@ typedef struct s_img
     void        *xidoo;
 }               t_img;
 
+typedef struct s_gamefile 
+{
+    char        *map_file;
+}           t_gamefile;
+
 // x_h == xpm_height
 typedef struct s_game
 {
@@ -118,10 +123,12 @@ int     check_map(t_game *game);
 static int	save_line_in_map(t_game *game, char *line);
 int     check_allowed_caracters(t_game *game);
 void	malloc_game(t_game *game);
-int     create_map(t_game *game);
+// int     create_map(t_game *game);
+int 	create_map(t_game *game, t_gamefile *gamefile);
 void    drawGrid(t_game *game);
 int     count_collectibles(t_game *game);
 void    window_init(t_game *game);
+int 	create_map_for_game(t_game *game, t_gamefile *gamefile);
 
 
 // FLOODFILL
@@ -130,7 +137,7 @@ int     map_len(t_game *game);
 void	flood_map(t_game *game, int x, int y);
 int     check_flood_fill(t_game *game);
 int     map_free_after_flood_fill(t_game *game);
-int     check_flood_fill_map(t_game *game);
+int     check_flood_fill_map(t_game *game, t_gamefile *gamefile);
 
 // INIT IMAGES/WINDOW
 void 	init_images_character(t_game *game);
@@ -141,6 +148,7 @@ void 	initialize_window(t_game *game);
 // void drawGrid(void *mlx, void *mlx_win, int xpm_width, int xpm_height, t_game *game);
 int     display_player_pos(t_game *game);
 // moves
+int     close_window(t_game *game);
 int	    controls_working(int command, t_game *game);
 int     move_right(t_game *game);
 int     move_left(t_game *game);

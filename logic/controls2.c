@@ -60,6 +60,14 @@ int	move_down(t_game *game)
 	return (0);
 }
 
+int close_window(t_game *game)
+{
+	ft_printf("ESC");
+    mlx_destroy_window(game->mlx, game->win);
+    // exit(0); // Vous pouvez choisir de faire un nettoyage approprié ici avant de sortir
+    return (0);
+}
+
 int	controls_working(int command, t_game *game)
 {
 	if (command == 100)
@@ -78,6 +86,8 @@ int	controls_working(int command, t_game *game)
 	{
 		move_down(game);
 	}
+	else  if (command == 53) // ou 27
+        close_window(game);
 	return (1);
 }
 
@@ -85,5 +95,6 @@ void 	run_game(t_game *game)
 {
 	drawGrid(game);    
     mlx_key_hook(game->win, controls_working, game);    
+	mlx_hook(game->win, 17, 0, close_window, game);
     mlx_loop(game->mlx);
 }

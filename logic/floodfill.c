@@ -69,9 +69,9 @@ int	check_flood_fill(t_game *game)
 	return (1);
 }
 
-int	check_flood_fill_map(t_game *game)
+int	check_flood_fill_map(t_game *game, t_gamefile *gamefile)
 {
-	if (!create_map(game))
+	if (!create_map(game, gamefile))
 	{
 		ft_printf("Error: Failed to create map\n");
 		return (0);

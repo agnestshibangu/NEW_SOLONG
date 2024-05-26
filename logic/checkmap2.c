@@ -52,7 +52,11 @@ int	check_allowed_caracters(t_game *game)
 {
 	int	x;
 	int	y;
+	int count_exit;
+	int count_caracter;
 
+	count_exit = 0;
+	count_caracter = 0;
 	y = 0;
 	while (y < game->map_height)
 	{

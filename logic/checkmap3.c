@@ -58,12 +58,13 @@ int	check_map(t_game *game)
 		ft_printf("Error: map not rectangle\n");
 		return (0);
 	}
+	ft_printf(" !!! checking map DONE !!!");
 	return (0);
 }
 
-int 	create_map_for_game(t_game *game)
+int 	create_map_for_game(t_game *game, t_gamefile *gamefile)
 {
-	if (!create_map(game))
+	if (!create_map(game, gamefile))
 	{
 		ft_printf("Error: Failed to create map\n");
 		return (0);

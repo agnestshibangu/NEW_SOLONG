@@ -28,7 +28,7 @@ int	check_extension_file_name(char *name)
 		i++;
 	}
 	if (y == 4 && name[i] == '\0')
-		ft_printf("extension ok\n");
+		return (1);
 	return (0);
 }
 

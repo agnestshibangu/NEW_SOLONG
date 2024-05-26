@@ -69,15 +69,24 @@ static int save_line_in_map(t_game *game, char *line)
 }
 
 
-int 	create_map(t_game *game) {
+int 	create_map(t_game *game, t_gamefile *gamefile) {
    
     int fd;
     char *treated_line;
-    const char *name_file = "./ber_files/file2.ber";
+    //const char *name_file = "./ber_files/file2.ber";
 	int i;
 
 	i = 0;
-    fd = open(name_file, O_RDONLY);
+    fd = open(gamefile->map_file, O_RDONLY);
+	// ft_printf("\nname file\n");
+	// ft_printf(name_file);
+	// ft_printf("\n");
+	ft_printf("file in map\n");
+	ft_printf(gamefile->map_file);
+	ft_printf("\n");
+	
+	//fd = open(name_file, O_RDONLY);
+	//ft_printf(game->map_file);
     if (fd < 0) {
         return (0);
     }

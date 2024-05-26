@@ -27,6 +27,7 @@ void	portal(t_game *game)
 void	walking(t_game *game)
 {
 	game->steps += 1;
+	ft_printf("TOTAL MOV COUNT : %d\n", game->steps);
 }
 
 int	move_right(t_game *game)
