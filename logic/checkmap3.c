@@ -6,7 +6,7 @@
 /*   By: agtshiba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 15:44:33 by agtshiba          #+#    #+#             */
-/*   Updated: 2024/05/17 15:44:35 by agtshiba         ###   ########.fr       */
+/*   Updated: 2024/05/26 19:48:47 by agtshiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int	count_exit_and_caracter(t_game *game)
 {
 	int	y;
 	int	x;
-	int nb_exit;
-	int nb_caracter;
+	int	nb_exit;
+	int	nb_caracter;
 
 	nb_exit = 0;
 	nb_caracter = 0;
@@ -66,8 +66,7 @@ int	count_exit_and_caracter(t_game *game)
 
 int	check_map(t_game *game)
 {
-	//ne  fonctionne pas 
-	if(!check_walls_horizontal(game))
+	if (!check_walls_horizontal(game))
 	{
 		ft_printf("Error: horizontal walls\n");
 		return (0);
@@ -99,24 +98,24 @@ int	check_map(t_game *game)
 	return (1);
 }
 
-int 	create_map_for_game(t_game *game, t_gamefile *gamefile)
+int	create_map_for_game(t_game *game, t_gamefile *gamefile)
 {
 	if (!create_map(game, gamefile))
 	{
 		ft_printf("Error: Failed to create map\n");
 		return (0);
 	}
-    if (!map_len(game))
+	if (!map_len(game))
 	{
 		ft_printf("Error: Failed to calculate map length\n");
 		return (0);
 	}
-    if (!check_map(game))
+	if (!check_map(game))
 	{
 		ft_printf("Error: Found error while checking map\n");
 		return (0);
 	}
-    if (!count_collectibles(game))
+	if (!count_collectibles(game))
 	{
 		ft_printf("Error: Not enought collectibles\n");
 		return (0);

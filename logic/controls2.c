@@ -6,7 +6,7 @@
 /*   By: agtshiba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 22:02:39 by agtshiba          #+#    #+#             */
-/*   Updated: 2024/05/20 22:09:49 by agtshiba         ###   ########.fr       */
+/*   Updated: 2024/05/26 19:57:02 by agtshiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,11 @@ int	move_down(t_game *game)
 	return (0);
 }
 
-int close_window(t_game *game)
+int	close_window(t_game *game)
 {
 	ft_printf("ESC");
-    mlx_destroy_window(game->mlx, game->win);
-    // exit(0); // Vous pouvez choisir de faire un nettoyage approprié ici avant de sortir
-    return (0);
+	mlx_destroy_window(game->mlx, game->win);
+	return (0);
 }
 
 int	controls_working(int command, t_game *game)
@@ -86,15 +85,17 @@ int	controls_working(int command, t_game *game)
 	{
 		move_down(game);
 	}
-	else  if (command == 53) // ou 27
-        close_window(game);
+	else if (command == 53)
+	{
+		close_window(game);
+	}
 	return (1);
 }
 
-void 	run_game(t_game *game)
+void	run_game(t_game *game)
 {
-	drawGrid(game);    
-    mlx_key_hook(game->win, controls_working, game);    
+	drawGrid(game);
+	mlx_key_hook(game->win, controls_working, game);
 	mlx_hook(game->win, 17, 0, close_window, game);
-    mlx_loop(game->mlx);
+	mlx_loop(game->mlx);
 }

@@ -6,22 +6,19 @@
 /*   By: agtshiba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 21:51:07 by agtshiba          #+#    #+#             */
-/*   Updated: 2024/05/20 22:02:01 by agtshiba         ###   ########.fr       */
+/*   Updated: 2024/05/26 19:49:53 by agtshiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-
 void	portal(t_game *game)
 {
-	//char	*path;
-	//path = "./images_op_end/image_end.xpm";
 	if (game->got_collectibles == game->nb_collectibles
 		&& game->map[game->player_pos_y][game->player_pos_x] == 'E')
 	{
 		free_game(game);
-	}
+	}	
 }
 
 void	walking(t_game *game)

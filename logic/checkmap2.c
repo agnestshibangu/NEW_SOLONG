@@ -6,7 +6,7 @@
 /*   By: agtshiba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 13:59:48 by agtshiba          #+#    #+#             */
-/*   Updated: 2024/05/20 21:24:42 by agtshiba         ###   ########.fr       */
+/*   Updated: 2024/05/26 19:44:05 by agtshiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ int	check_allowed_caracters(t_game *game)
 {
 	int	x;
 	int	y;
-	int count_exit;
-	int count_caracter;
+	int	count_exit;
+	int	count_caracter;
 
 	count_exit = 0;
 	count_caracter = 0;
@@ -76,14 +76,13 @@ int	check_allowed_caracters(t_game *game)
 	return (1);
 }
 
-int		check_if_rectangle(t_game *game)
+int	check_if_rectangle(t_game *game)
 {
 	int	init_len;
 	int	y;
 	int	x;
 
 	init_len = game->map_width - 1;
-
 	y = 0;
 	while (y < game->map_height - 1)
 	{
@@ -97,4 +96,3 @@ int		check_if_rectangle(t_game *game)
 	x = 0;
 	return (1);
 }
-

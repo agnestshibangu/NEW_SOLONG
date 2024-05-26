@@ -6,27 +6,28 @@
 /*   By: agtshiba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 12:35:39 by agtshiba          #+#    #+#             */
-/*   Updated: 2024/05/17 12:51:19 by agtshiba         ###   ########.fr       */
+/*   Updated: 2024/05/26 20:05:27 by agtshiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-// FREE
-int map_free_after_flood_fill(t_game *game) {
-    int nbr_of_lines = 0;
+int	map_free_after_flood_fill(t_game *game)
+{
+	int		nbr_of_lines;
 
-    if (game->map != NULL) {
-        while (nbr_of_lines < game->map_height) {
-            //ft_printf("Freeing line %d: %s\n", nbr_of_lines, game->map[nbr_of_lines]);
-            free(game->map[nbr_of_lines]);
-            game->map[nbr_of_lines] = NULL;
-            nbr_of_lines++;
-        }
-        // ft_printf("All lines freed.\n");
-        free(game->map);
-    }
-    return (1);
+	nbr_of_lines = 0;
+	if (game->map != NULL)
+	{
+		while (nbr_of_lines < game->map_height)
+		{
+			free(game->map[nbr_of_lines]);
+			game->map[nbr_of_lines] = NULL;
+			nbr_of_lines++;
+		}
+		free(game->map);
+	}
+	return (1);
 }
 
 void	flood_map(t_game *game, int x, int y)
@@ -55,7 +56,6 @@ int	check_flood_fill(t_game *game)
 		{
 			if (game->map[i][j] == 'C' || game->map[i][j] == 'E')
 			{
-				// ft_printf(" ! error flood fill error ! ");
 				return (0);
 			}
 			ft_printf("%c", game->map[i][j]);
@@ -96,14 +96,13 @@ int	check_flood_fill_map(t_game *game, t_gamefile *gamefile)
 	if (!check_flood_fill(game))
 	{
 		ft_printf("Error: Failed flood map\n");
-        return (0);
+		return (0);
 	}
 	if (!map_free_after_flood_fill(game))
 	{
 		ft_printf("Error: Failed to free map after flood fill\n");
-        return (0);
+		return (0);
 	}
-
 	ft_printf(" !!! check flood fill DONE !!!");
 	return (1);
 }

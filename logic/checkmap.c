@@ -6,7 +6,7 @@
 /*   By: agtshiba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 13:38:36 by agtshiba          #+#    #+#             */
-/*   Updated: 2024/05/17 13:57:55 by agtshiba         ###   ########.fr       */
+/*   Updated: 2024/05/26 19:42:25 by agtshiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,10 @@ int	check_extension_file_name(char *name)
 	return (0);
 }
 
-
-void 	calculate_height_map(t_game *game)
+void	calculate_height_map(t_game *game)
 {
 	int		fd;
-	int 	height;
+	int		height;
 	char	*treated_line;
 	char	*name_file;
 
@@ -45,22 +44,21 @@ void 	calculate_height_map(t_game *game)
 	check_extension_file_name(name_file);
 	fd = open(name_file, O_RDONLY);
 	ft_memset(game, 0, sizeof(t_game));
-	treated_line = get_next_line(fd);	
+	treated_line = get_next_line(fd);
 	if (!treated_line)
 	{
-			close(fd);
-			return ;
+		close(fd);
+		return ;
 	}
-	while (treated_line){
+	while (treated_line)
+	{
 		height++;
 		free(treated_line);
-		treated_line = get_next_line(fd);	
+		treated_line = get_next_line(fd);
 	}
 	game->map_height = height;
-	// ft_printf("%d\n",height);
 	close(fd);
 }
-
 
 // ALLOC
 void	malloc_game(t_game *game)
