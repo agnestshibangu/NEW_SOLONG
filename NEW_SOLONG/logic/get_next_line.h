@@ -128,7 +128,7 @@ int     check_map(t_game *game);
 static int	save_line_in_map(t_game *game, char *line);
 // static int manage_temp(t_game *game, char *line);
 static char  **manage_temp(t_game *game, char *line);
-static int if_temp_null(t_game *game, char *temp);
+static int if_temp_null(t_game *game, char **temp);
 int     check_allowed_caracters(t_game *game);
 void	malloc_game(t_game *game);
 // int     create_map(t_game *game);

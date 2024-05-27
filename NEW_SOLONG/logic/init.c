@@ -31,18 +31,23 @@ void	*ft_memset(void *b, int c, size_t length)
 // if strdup fails, free the already allocated memory
 // free game
 // pass content of temp in game->map
-static int if_temp_null(t_game *game, char *temp)
+static int if_temp_null(t_game *game, char **temp)
 {
 	int		y;
 
-	if (!temp[i])
+	if (!temp)
 	{
 		y = 0;
 		while (y < game->map_height)
-			free(temp[y++]);
+		{
+			free(temp[y]);
+			y++;
+		}
+			
 		free(temp);
 		return (0);
 	}
+	return (1);
 }
 
 static char  **manage_temp(t_game *game, char *line)
@@ -61,7 +66,11 @@ static char  **manage_temp(t_game *game, char *line)
 		i++;
 	}
 	temp[i] = ft_strdup(line);
-	if_temp_null(game, temp);
+	if (!temp[i])
+	{
+		if_temp_null(game, temp);
+		return (NULL);
+	}
 	return (temp);
 }
 
