@@ -6,7 +6,7 @@
 /*   By: agtshiba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 12:35:39 by agtshiba          #+#    #+#             */
-/*   Updated: 2024/05/26 20:05:27 by agtshiba         ###   ########.fr       */
+/*   Updated: 2024/05/27 12:44:21 by agtshiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int	map_free_after_flood_fill(t_game *game)
 
 void	flood_map(t_game *game, int x, int y)
 {
-	if (game->map[y][x] == 'P' || game->map[y][x] == '1' || game->map[y][x] == 'F')
+	if (game->map[y][x] == 'P' || game->map[y][x] == '1'
+		|| game->map[y][x] == 'F')
 		return ;
 	game->map[y][x] = 'F';
 	flood_map(game, x, y + 1);
@@ -49,7 +50,6 @@ int	check_flood_fill(t_game *game)
 	i = 0;
 	j = 0;
 	flood_map(game, game->player_pos_x, game->player_pos_y);
-	ft_printf("flood map done\n");
 	while (i < game->map_height)
 	{
 		while (j < game->map_width)
@@ -58,14 +58,11 @@ int	check_flood_fill(t_game *game)
 			{
 				return (0);
 			}
-			ft_printf("%c", game->map[i][j]);
 			j++;
 		}
 		i++;
 		j = 0;
 	}
-	ft_printf("\n");
-	ft_printf("CHECK FLOOD FILL DONE \n");
 	return (1);
 }
 
@@ -77,21 +74,11 @@ int	check_flood_fill_map(t_game *game, t_gamefile *gamefile)
 		return (0);
 	}
 	if (!map_len(game))
-	{
-		ft_printf("Error: Failed to calculate map length\n");
 		return (0);
-	}
 	if (!check_map(game))
-	{
-		fflush(stdout);
-		ft_printf("Error: Found error while checking map\n");
 		return (0);
-	}
 	if (!display_player_pos(game))
-	{
-		ft_printf("Error: Failed to retreive player position\n");
 		return (0);
-	}
 	flood_map(game, game->player_pos_x, game->player_pos_y);
 	if (!check_flood_fill(game))
 	{
@@ -103,6 +90,5 @@ int	check_flood_fill_map(t_game *game, t_gamefile *gamefile)
 		ft_printf("Error: Failed to free map after flood fill\n");
 		return (0);
 	}
-	ft_printf(" !!! check flood fill DONE !!!");
 	return (1);
 }

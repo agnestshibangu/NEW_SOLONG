@@ -71,10 +71,13 @@ typedef struct s_game
     t_img       img; 
 }               t_game;
 
+
+// # include "../minilibx/mlx.h"
+// # include "../minilibx/mlx_int.h"
+
 #include "../my_printf/ft_printf.c"
 #include "./gnl_utils.c"
 #include "./gnl.c"
-
 #include "./init.c"
 #include "./init_window.c"
 
@@ -116,11 +119,16 @@ int     check_rectangle(t_game *game);
 int     check_walls_horizontal(t_game *game);
 int     check_walls_vertical(t_game *game);
 int     check_if_rectangle(t_game *game);
+//int     check_walls(t_game *game);
+int	    check_walls_and_collectibles(t_game *game);
 int     check_map(t_game *game); 
 
 
 // CREATE MAP (FOR CHECK) (FOR ACTUAL GAME)
 static int	save_line_in_map(t_game *game, char *line);
+// static int manage_temp(t_game *game, char *line);
+static char  **manage_temp(t_game *game, char *line);
+static int if_temp_null(t_game *game, char *temp);
 int     check_allowed_caracters(t_game *game);
 void	malloc_game(t_game *game);
 // int     create_map(t_game *game);
@@ -164,6 +172,7 @@ void    walking(t_game *game);
 void 	run_game(t_game *game);
 
 // FREE GAME
+void     free_mlx(t_game *game);
 int     free_game(t_game *game);
 void 	free_images(t_game *game);
 

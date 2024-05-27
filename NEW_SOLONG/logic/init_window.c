@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_window.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agtshiba <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/27 16:53:09 by agtshiba          #+#    #+#             */
+/*   Updated: 2024/05/27 16:54:25 by agtshiba         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "get_next_line.h"
 
@@ -6,14 +17,10 @@ void	window_init(t_game *game)
 	int	win_w;
 	int	win_h;
 
-	ft_printf("window init width %d\n", game->map_width);
-	ft_printf("window init height %d", game->map_height);
-
 	win_w = (game->map_width - 1) * 31;
 	win_h = game->map_height * 31;
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, win_w, win_h, "game map");
-	//ft_printf("window size");
 }
 
 void	init_images_character(t_game *game)
@@ -45,9 +52,9 @@ void	init_images_character(t_game *game)
 	g->img.x_i_c_dd = mlx_xpm_file_to_image(m, g->img.x_p_c_dd, w, h);
 }
 
-void init_images_obj(t_game *game)
+void	init_images_obj(t_game *game)
 {
-	t_game *g;
+	t_game	*g;
 	void	*m;
 	int		*h;
 	int		*w;
@@ -66,7 +73,7 @@ void init_images_obj(t_game *game)
 	g->img.xidoo = mlx_xpm_file_to_image(m, g->img.xpd, w, h);
 }
 
-void 	initialize_window(t_game *game)
+void	initialize_window(t_game *game)
 {
 	window_init(game);
 	init_images_character(game);

@@ -47,7 +47,7 @@ int	move_right(t_game *game)
 			game->map[y][x + 1] = '0';
 		}
 	}
-	drawGrid(game);
+	draw_grid(game);
 	portal(game);
 	return (0);
 }
@@ -72,7 +72,7 @@ int	move_left(t_game *game)
 			game->map[y][x - 1] = '0';
 		}
 	}
-	drawGrid(game);
+	draw_grid(game);
 	portal(game);
 	return (0);
 }

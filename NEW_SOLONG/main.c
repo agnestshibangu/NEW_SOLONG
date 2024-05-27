@@ -10,16 +10,16 @@ int main(int ac, char **av) {
 
     if (ac != 2)
     {
-        ft_printf("Error : argument file incorrect");
+        printf("Error: argument file missing\n");
         return (0);
     }
-    else if (ac == 2)
+    if (!check_extension_file_name(av[1]))
     {
-        if (!check_extension_file_name(av[1]))
-            ft_printf("file incorrect");
-        else 
-            gamefile.map_file = av[1];
+        printf("Error: invalid file extension\n");
+        return (0);
     }
+
+    gamefile.map_file = av[1];
 
     // - FLOOD FILL CHECK - //
     if (!check_flood_fill_map(&game, &gamefile))

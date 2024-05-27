@@ -30,7 +30,7 @@ int	move_up(t_game *game)
 			game->map[y - 1][x] = '0';
 		}
 	}
-	drawGrid(game);
+	draw_grid(game);
 	portal(game);
 	return (0);
 }
@@ -55,7 +55,7 @@ int	move_down(t_game *game)
 			game->map[y + 1][x] = '0';
 		}
 	}
-	drawGrid(game);
+	draw_grid(game);
 	portal(game);
 	return (0);
 }
@@ -94,7 +94,7 @@ int	controls_working(int command, t_game *game)
 
 void	run_game(t_game *game)
 {
-	drawGrid(game);
+	draw_grid(game);
 	mlx_key_hook(game->win, controls_working, game);
 	mlx_hook(game->win, 17, 0, close_window, game);
 	mlx_loop(game->mlx);
