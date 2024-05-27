@@ -47,6 +47,12 @@ static char	*make_line(int fd, char *buffer, char *storage)
 	return (storage);
 }
 
+void 	free_backup(char *backup)
+{
+	free(backup);
+	backup = NULL;
+}
+
 static char	*my_extract(char *line)
 {
 	size_t	len;
@@ -67,10 +73,7 @@ static char	*my_extract(char *line)
 	substring_len = ft_strlen(line) - len;
 	backup = ft_substr(line, start, substring_len);
 	if (*backup == '\0')
-	{
-		free(backup);
-		backup = NULL;
-	}
+		free_backup(backup);
 	line[len + 1] = '\0';
 	return (backup);
 }
