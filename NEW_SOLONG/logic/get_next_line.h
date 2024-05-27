@@ -108,7 +108,8 @@ static char	*my_extract(char *line);
 char	*get_next_line(int fd);
 void	*ft_memset(void *b, int c, size_t length);
 int     calculate_len(t_game *game, char *treated_line);
-
+static char *manage_storage(char *storage, char *buffer);
+void 	free_storage(char *storage);
 //int     calculate_len(char *treated_line);
 //void    display_image_before(t_game *game, char *path);
 

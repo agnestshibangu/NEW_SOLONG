@@ -20,6 +20,7 @@ int main(int ac, char **av) {
     }
 
     gamefile.map_file = av[1];
+    ft_printf("%s", gamefile.map_file);
 
     // - FLOOD FILL CHECK - //
     if (!check_flood_fill_map(&game, &gamefile))

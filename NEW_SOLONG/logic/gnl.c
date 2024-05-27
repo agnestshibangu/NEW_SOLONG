@@ -10,9 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+static char *manage_storage(char *storage, char *buffer)
+{
+	char *temp;
+
+	if (!storage)
+		storage = ft_strdup("");
+	temp = storage;
+	storage = ft_strjoin(temp, buffer); 
+	free(temp);
+	temp = NULL;
+	return (storage);
+}
+
 static char	*make_line(int fd, char *buffer, char *storage)
 {
-	char	*temp;
 	int		read_bytes;
 
 	read_bytes = 1;
@@ -24,12 +36,7 @@ static char	*make_line(int fd, char *buffer, char *storage)
 		else if (read_bytes == 0)
 			break ;
 		buffer[read_bytes] = '\0';
-		if (!storage)
-			storage = ft_strdup("");
-		temp = storage;
-		storage = ft_strjoin(temp, buffer); 
-		free(temp);
-		temp = NULL;
+		storage = manage_storage(storage, buffer);
 		if (!storage)
 			return (NULL);
 		if (ft_strchr(buffer, '\n'))
@@ -68,6 +75,15 @@ static char	*my_extract(char *line)
 	return (backup);
 }
 
+void 	free_storage(char *storage)
+{
+	if (storage)
+	{
+		free(storage);
+		storage = NULL;
+	}
+}
+
 char	*get_next_line(int fd)
 {
 	static char	*storage;
@@ -79,18 +95,12 @@ char	*get_next_line(int fd)
 		return (0);
 	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
-	{
 		return (0);
-	}
 	line = make_line(fd, buffer, storage);
 	free(buffer);
 	if (!line)
 	{
-		if (storage)
-		{
-			free(storage);
-			storage = NULL;
-		}
+		free_storage(storage);
 		return (NULL);
 	}
 	if (ft_strchr(line, '\n') || line != NULL)

@@ -43,7 +43,6 @@ static int if_temp_null(t_game *game, char **temp)
 			free(temp[y]);
 			y++;
 		}
-			
 		free(temp);
 		return (0);
 	}
