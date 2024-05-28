@@ -1,8 +1,4 @@
-#include "./minilibx/mlx.h"
-#include "./my_printf/ft_printf.h"
-// #include <stdio.h>
 #include "./logic/get_next_line.h"
-#include <stdlib.h>
 
 int main(int ac, char **av) {
 

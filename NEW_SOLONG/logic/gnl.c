@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-static char *manage_storage(char *storage, char *buffer)
+#include "get_next_line.h"
+
+char *manage_storage(char *storage, char *buffer)
 {
 	char *temp;
 
@@ -23,7 +25,7 @@ static char *manage_storage(char *storage, char *buffer)
 	return (storage);
 }
 
-static char	*make_line(int fd, char *buffer, char *storage)
+char	*make_line(int fd, char *buffer, char *storage)
 {
 	int		read_bytes;
 
@@ -53,7 +55,7 @@ void 	free_backup(char *backup)
 	backup = NULL;
 }
 
-static char	*my_extract(char *line)
+char	*my_extract(char *line)
 {
 	size_t	len;
 	size_t	start;

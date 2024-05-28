@@ -10,6 +10,9 @@
 #include <X11/keysym.h>
 #include <X11/X.h>
 
+#include "../minilibx/mlx.h"
+#include "../my_printf/ft_printf.h"
+
 # ifndef BUFFER_SIZE
 # define BUFFER_SIZE 1 
 # endif
@@ -74,23 +77,22 @@ typedef struct s_game
     t_img       img; 
 }               t_game;
 
-// #include "../my_printf/ft_printf.c"
-#include "./gnl_utils.c"
-#include "./gnl.c"
-#include "./init.c"
-#include "./init_window.c"
+// #include "./gnl_utils.c"
+// #include "./gnl.c"
+// #include "./init.c"
+// #include "./init_window.c"
 
-#include "./checkmap.c"
-#include "./checkmap2.c"
-#include "./checkmap3.c"
+// #include "./checkmap.c"
+// #include "./checkmap2.c"
+// #include "./checkmap3.c"
 
-#include "./floodfill.c"
+// #include "./floodfill.c"
 
-#include "./map.c"
-#include "./free.c"
+// #include "./map.c"
+// #include "./free.c"
 
-#include "./controls.c"
-#include "./controls2.c"
+// #include "./controls.c"
+// #include "./controls2.c"
 
 
 // LIBFT UTILS
@@ -99,20 +101,17 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *s);
 char	*ft_strchr(const char *s, int i);
 char	*ft_strjoin(char const *s1, char const *s2);
-static char *make_line(int fd, char *buffer, char *storage);
+
 
 // GNL
-// static char	*extract(char *line);
-static char	*my_extract(char *line);
+char	*make_line(int fd, char *buffer, char *storage);
+char	*my_extract(char *line);
 char	*get_next_line(int fd);
 void	*ft_memset(void *b, int c, size_t length);
 int     calculate_len(t_game *game, char *treated_line);
-static char *manage_storage(char *storage, char *buffer);
+char *manage_storage(char *storage, char *buffer);
 void 	free_storage(char *storage);
 void 	free_backup(char *backup);
-//int     calculate_len(char *treated_line);
-//void    display_image_before(t_game *game, char *path);
-
 
 // CHECK THE MAP
 int     does_file_exist(char *name);
@@ -121,22 +120,19 @@ int     check_rectangle(t_game *game);
 int     check_walls_horizontal(t_game *game);
 int     check_walls_vertical(t_game *game);
 int     check_if_rectangle(t_game *game);
-//int     check_walls(t_game *game);
 int	    check_walls_and_collectibles(t_game *game);
 int     check_map(t_game *game); 
 
 
 void init_display(t_game *game);
 // CREATE MAP (FOR CHECK) (FOR ACTUAL GAME)
-static int	save_line_in_map(t_game *game, char *line);
-// static int manage_temp(t_game *game, char *line);
-static char  **manage_temp(t_game *game, char *line);
-static int if_temp_null(t_game *game, char **temp);
+int	save_line_in_map(t_game *game, char *line);
+char  **manage_temp(t_game *game, char *line);
+int if_temp_null(t_game *game, char **temp);
 int     check_allowed_caracters(t_game *game);
 void	malloc_game(t_game *game);
-// int     create_map(t_game *game);
 int 	create_map(t_game *game, t_gamefile *gamefile);
-void    drawGrid(t_game *game);
+void    draw_grid(t_game *game);
 int     count_collectibles(t_game *game);
 int     count_exit_and_caracter(t_game *game);
 void    window_init(t_game *game);
@@ -156,8 +152,6 @@ void 	init_images_character(t_game *game);
 void    init_images_obj(t_game *game);
 void 	initialize_window(t_game *game);
 
-
-// void drawGrid(void *mlx, void *mlx_win, int xpm_width, int xpm_height, t_game *game);
 int     display_player_pos(t_game *game);
 // moves
 int     close_window(t_game *game);

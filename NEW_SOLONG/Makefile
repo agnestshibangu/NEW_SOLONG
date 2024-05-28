@@ -3,10 +3,27 @@ CFLAGS := -Wall -Wextra -Werror -g
 NAME := so_long
 MLX_PATH := ./minilibx/
 MLX_LIB := $(MLX_PATH)/libmlx.a
+
 PRINTF_DIR := ./my_printf/
 PRINTF_SRCS := $(wildcard $(PRINTF_DIR)*.c)
 PRINTF_OBJS := $(patsubst $(PRINTF_DIR)%.c, $(PRINTF_DIR)%.o, $(PRINTF_SRCS))
-SRCS := main.c $(PRINTF_OBJS)
+
+SRCS := main.c \
+		$(PRINTF_OBJS) \
+		logic/checkmap.c \
+		logic/checkmap2.c \
+		logic/checkmap3.c \
+		logic/controls.c \
+		logic/controls2.c \
+		logic/floodfill.c \
+		logic/free.c \
+		logic/gnl_utils.c \
+		logic/gnl.c \
+		logic/init_window.c \
+		logic/init.c \
+		logic/map.c \
+
+		
 LIBRARY := -Lminilibx -lmlx -L/usr/lib -lXext -lX11 -lm -lz 
 OBJS := $(SRCS:.c=.o)
 INC := -I./my_printf/
@@ -21,6 +38,10 @@ all: $(NAME)
 # Rule to build the custom printf library
 $(PRINTF_OBJS): $(PRINTF_SRCS)
 	@make -C $(PRINTF_DIR)
+
+# Rule to compile all .c files in the logic directory to .o files
+# $(LOGIC_DIR)%.o: $(LOGIC_DIR)%.c
+# 	$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 $(MLX_LIB):
 	@make -C $(MLX_PATH)
