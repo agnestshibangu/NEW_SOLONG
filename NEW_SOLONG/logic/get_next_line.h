@@ -120,6 +120,7 @@ void 	free_backup(char *backup);
 
 
 // CHECK THE MAP
+int     does_file_exist(char *name);
 int	    check_extension_file_name(char *name);
 int     check_rectangle(t_game *game);
 int     check_walls_horizontal(t_game *game);

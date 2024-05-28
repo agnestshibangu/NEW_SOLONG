@@ -32,6 +32,19 @@ int	check_extension_file_name(char *name)
 	return (0);
 }
 
+int does_file_exist(char *name)
+{
+	int		fd;
+	fd = open(name, O_RDONLY);
+	if (fd < 0)
+	{
+		ft_printf("the file does not exist");
+		return (0);
+	}
+	else
+		return (1);
+}
+
 void	malloc_game(t_game *game)
 {
 	game = (t_game *)malloc(sizeof(t_game));
