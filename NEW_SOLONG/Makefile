@@ -18,6 +18,7 @@ SRCS := main.c \
 		logic/floodfill.c \
 		logic/free.c \
 		logic/gnl_utils.c \
+		logic/gnl_function.c \
 		logic/gnl.c \
 		logic/init_window.c \
 		logic/init.c \

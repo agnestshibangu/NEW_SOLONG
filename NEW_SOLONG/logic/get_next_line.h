@@ -6,7 +6,7 @@
 /*   By: agtshiba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 18:07:53 by agtshiba          #+#    #+#             */
-/*   Updated: 2024/05/28 18:26:57 by agtshiba         ###   ########.fr       */
+/*   Updated: 2024/05/28 21:11:31 by agtshiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include "../my_printf/ft_printf.h"
 
 # ifndef BUFFER_SIZE
-# define BUFFER_SIZE 1 
+#  define BUFFER_SIZE 1 
 # endif
 
 // x = xpm   i = img

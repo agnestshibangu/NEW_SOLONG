@@ -6,23 +6,11 @@
 /*   By: agtshiba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 13:12:40 by agtshiba          #+#    #+#             */
-/*   Updated: 2024/05/28 18:00:08 by agtshiba         ###   ########.fr       */
+/*   Updated: 2024/05/28 21:22:22 by agtshiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-void	*ft_memset(void *b, int c, size_t length)
-{
-	unsigned char	*p;
-
-	p = (unsigned char *)b;
-	while (length--)
-	{
-		*p++ = (unsigned char)c;
-	}
-	return (b);
-}
 
 // allocating temp to size of map plus NULL
 // while map, pass everything in temp
@@ -126,29 +114,4 @@ int	map_len(t_game *game)
 		return (0);
 	game->map_width = len;
 	return (1);
-}
-
-int	display_player_pos(t_game *game)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (y < game->map_height)
-	{
-		x = 0;
-		while (x < game->map_width - 1)
-		{
-			if (game->map[y][x] == 'P')
-			{
-				game->player_pos_x = x;
-				game->player_pos_y = y;
-				game->map[y][x] = '0';
-				return (1);
-			}
-			x++;
-		}
-		y++;
-	}
-	return (0);
 }
