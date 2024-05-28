@@ -6,20 +6,20 @@
 /*   By: agtshiba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 12:54:19 by agtshiba          #+#    #+#             */
-/*   Updated: 2024/05/17 13:09:44 by agtshiba         ###   ########.fr       */
+/*   Updated: 2024/05/28 17:57:52 by agtshiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char *manage_storage(char *storage, char *buffer)
+char	*manage_storage(char *storage, char *buffer)
 {
-	char *temp;
+	char	*temp;
 
 	if (!storage)
 		storage = ft_strdup("");
 	temp = storage;
-	storage = ft_strjoin(temp, buffer); 
+	storage = ft_strjoin(temp, buffer);
 	free(temp);
 	temp = NULL;
 	return (storage);
@@ -49,7 +49,7 @@ char	*make_line(int fd, char *buffer, char *storage)
 	return (storage);
 }
 
-void 	free_backup(char *backup)
+void	free_backup(char *backup)
 {
 	free(backup);
 	backup = NULL;
@@ -80,7 +80,7 @@ char	*my_extract(char *line)
 	return (backup);
 }
 
-void 	free_storage(char *storage)
+void	free_storage(char *storage)
 {
 	if (storage)
 	{

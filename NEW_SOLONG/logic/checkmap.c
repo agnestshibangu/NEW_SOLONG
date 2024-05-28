@@ -6,7 +6,7 @@
 /*   By: agtshiba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 13:38:36 by agtshiba          #+#    #+#             */
-/*   Updated: 2024/05/26 19:42:25 by agtshiba         ###   ########.fr       */
+/*   Updated: 2024/05/28 17:50:00 by agtshiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,10 @@ int	check_extension_file_name(char *name)
 	return (0);
 }
 
-int does_file_exist(char *name)
+int	does_file_exist(char *name)
 {
 	int		fd;
+
 	fd = open(name, O_RDONLY);
 	if (fd < 0)
 	{

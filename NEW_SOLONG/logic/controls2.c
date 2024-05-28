@@ -6,7 +6,7 @@
 /*   By: agtshiba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 22:02:39 by agtshiba          #+#    #+#             */
-/*   Updated: 2024/05/26 19:57:02 by agtshiba         ###   ########.fr       */
+/*   Updated: 2024/05/28 17:51:42 by agtshiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,16 +69,6 @@ int	close_window(t_game *game)
 	return (0);
 }
 
-// void init_display(t_game *game)
-// {
-//     game->dpy = XOpenDisplay(NULL);
-//     if (!game->dpy)
-//     {
-//         fprintf(stderr, "Unable to open X display\n");
-//         exit(1);
-//     }
-//}
-
 int	controls_working(int keysym, t_game *game)
 {
 	if (keysym == XK_d)
@@ -110,5 +100,4 @@ void	run_game(t_game *game)
 	mlx_key_hook(game->win, controls_working, game);
 	mlx_hook(game->win, 17, 0, close_window, game);
 	mlx_loop(game->mlx);
-	// XCloseDisplay(game->dpy);
 }

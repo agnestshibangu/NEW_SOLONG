@@ -6,7 +6,7 @@
 /*   By: agtshiba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 13:12:40 by agtshiba          #+#    #+#             */
-/*   Updated: 2024/05/27 16:16:37 by agtshiba         ###   ########.fr       */
+/*   Updated: 2024/05/28 18:00:08 by agtshiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	*ft_memset(void *b, int c, size_t length)
 // if strdup fails, free the already allocated memory
 // free game
 // pass content of temp in game->map
-int if_temp_null(t_game *game, char **temp)
+int	if_temp_null(t_game *game, char **temp)
 {
 	int		y;
 
@@ -49,11 +49,11 @@ int if_temp_null(t_game *game, char **temp)
 	return (1);
 }
 
-char  **manage_temp(t_game *game, char *line)
+char	**manage_temp(t_game *game, char *line)
 {
 	char	**temp;
 	int		i;
-	
+
 	i = 0;
 	temp = (char **)malloc(sizeof(char *) * (game->map_height + 1));
 	if (!temp)
@@ -75,7 +75,8 @@ char  **manage_temp(t_game *game, char *line)
 
 int	save_line_in_map(t_game *game, char *line)
 {
-	char 	**temp;
+	char	**temp;
+
 	if (!line)
 		return (0);
 	game->map_height++;
