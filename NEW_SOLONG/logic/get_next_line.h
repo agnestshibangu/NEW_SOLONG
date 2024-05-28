@@ -6,7 +6,7 @@
 /*   By: agtshiba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 18:07:53 by agtshiba          #+#    #+#             */
-/*   Updated: 2024/05/28 18:20:13 by agtshiba         ###   ########.fr       */
+/*   Updated: 2024/05/28 18:26:57 by agtshiba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 # define GET_NEXT_LINE_H
 
-#include <stdlib.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <string.h>
-#include <X11/keysym.h>
-#include <X11/X.h>
-#include "../minilibx/mlx.h"
-#include "../my_printf/ft_printf.h"
+# include <stdlib.h>
+# include <fcntl.h>
+# include <unistd.h>
+# include <string.h>
+# include <X11/keysym.h>
+# include <X11/X.h>
+# include "../minilibx/mlx.h"
+# include "../my_printf/ft_printf.h"
 
 # ifndef BUFFER_SIZE
 # define BUFFER_SIZE 1 
@@ -81,7 +81,7 @@ typedef struct s_game
 	int		win_w;
 	int		win_h;
 	t_img	img;
-}               t_game;
+}		t_game;
 
 // LIBFT UTILS
 size_t	ft_strlen(const char *str);
@@ -108,7 +108,7 @@ int		check_walls_horizontal(t_game *game);
 int		check_walls_vertical(t_game *game);
 int		check_if_rectangle(t_game *game);
 int		check_walls_and_collectibles(t_game *game);
-int		check_map(t_game *game); 
+int		check_map(t_game *game);
 void	init_display(t_game *game);
 
 // CREATE MAP (FOR CHECK) (FOR ACTUAL GAME)
@@ -136,8 +136,8 @@ int		check_flood_fill_map(t_game *game, t_gamefile *gamefile);
 void	init_images_character(t_game *game);
 void	init_images_obj(t_game *game);
 void	initialize_window(t_game *game);
+int		display_player_pos(t_game *game);
 
-int     display_player_pos(t_game *game);
 // moves
 int		close_window(t_game *game);
 int		controls_working(int command, t_game *game);
