@@ -1,31 +1,14 @@
-# Nom de l'executable
-NAME := so_long
-
 CC := cc
-# CC := gcc
-
-# MinilibX
-MLX_PATH = ./minilibx/
-MLX_LIB = $(MLX_PATH)/libmlx.a
-
-# Options de compilation
 CFLAGS := -Wall -Wextra -Werror -g
-# CFLAGS := -Wall -Wextra -Werror -Iheaders/
-
-
-# printf
-PRINTF_NAME = my_printf 
-PRINTF_PATH = ./my_printf/
-PRINTF = $(PRINTF_PATH)$(PRINTF_NAME)
-
-# Liste des fichiers source.
-SRCS := main.c	
-
-# Options de la bibliotheque MiniLibX et des bibliotheques systeme
+NAME := so_long
+MLX_PATH := ./minilibx/
+MLX_LIB := $(MLX_PATH)/libmlx.a
+PRINTF_DIR := ./my_printf/
+PRINTF_SRCS := $(wildcard $(PRINTF_DIR)*.c)
+PRINTF_OBJS := $(patsubst $(PRINTF_DIR)%.c, $(PRINTF_DIR)%.o, $(PRINTF_SRCS))
+SRCS := main.c $(PRINTF_OBJS)
 LIBRARY := -Lminilibx -lmlx -L/usr/lib -lXext -lX11 -lm -lz 
-# LIBRARY := -L./minilibx -lmlx -lXext -lX11 -lm
 OBJS := $(SRCS:.c=.o)
-
 INC := -I./my_printf/
 
 # Default target
@@ -36,29 +19,27 @@ all: $(NAME)
 	$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 # Rule to build the custom printf library
-$(PRINTF):
-	@make -C $(PRINTF_PATH)
+$(PRINTF_OBJS): $(PRINTF_SRCS)
+	@make -C $(PRINTF_DIR)
 
 $(MLX_LIB):
 	@make -C $(MLX_PATH)
 
-
 # Rule to create the executable by linking the objects and the custom printf library
-$(NAME): $(OBJS) $(PRINTF)	$(MLX_LIB)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBRARY) -o $(NAME) $(PRINTF)
+$(NAME): $(OBJS) $(MLX_LIB)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBRARY) -o $(NAME)
 
 # Rule to clean object files
 clean:
 	$(RM) $(OBJS)
-	@make clean -C $(PRINTF_PATH)
+	@make clean -C $(PRINTF_DIR)
 	@make clean -C $(MLX_PATH)
 
 # Rule to clean object files and the executable
 fclean: clean
 	$(RM) $(NAME)
-	@make fclean -C $(PRINTF_PATH)
+	@make fclean -C $(PRINTF_DIR)
 	@make clean -C $(MLX_PATH)
-
 
 # Rule to force a rebuild
 re: fclean all

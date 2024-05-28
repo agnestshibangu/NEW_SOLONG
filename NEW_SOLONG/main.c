@@ -1,5 +1,6 @@
 #include "./minilibx/mlx.h"
-#include <stdio.h>
+#include "./my_printf/ft_printf.h"
+// #include <stdio.h>
 #include "./logic/get_next_line.h"
 #include <stdlib.h>
 
@@ -10,12 +11,12 @@ int main(int ac, char **av) {
 
     if (ac != 2)
     {
-        printf("Error: argument file missing\n");
+        ft_printf("Error: argument file missing\n");
         return (0);
     }
     if (!check_extension_file_name(av[1]))
     {
-        printf("Error: invalid file extension\n");
+        ft_printf("Error: invalid file extension\n");
         return (0);
     }
 

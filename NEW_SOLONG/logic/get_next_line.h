@@ -72,14 +72,9 @@ typedef struct s_game
     int         win_w;
     int         win_h;
     t_img       img; 
-    // Display *dpy;
 }               t_game;
 
-
-// # include "../minilibx/mlx.h"
-// # include "../minilibx/mlx_int.h"
-
-#include "../my_printf/ft_printf.c"
+// #include "../my_printf/ft_printf.c"
 #include "./gnl_utils.c"
 #include "./gnl.c"
 #include "./init.c"
