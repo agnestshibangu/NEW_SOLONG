@@ -7,6 +7,9 @@
 #include <unistd.h>
 #include <string.h>
 
+#include <X11/keysym.h>
+#include <X11/X.h>
+
 # ifndef BUFFER_SIZE
 # define BUFFER_SIZE 1 
 # endif
@@ -69,6 +72,7 @@ typedef struct s_game
     int         win_w;
     int         win_h;
     t_img       img; 
+    // Display *dpy;
 }               t_game;
 
 
@@ -126,6 +130,7 @@ int	    check_walls_and_collectibles(t_game *game);
 int     check_map(t_game *game); 
 
 
+void init_display(t_game *game);
 // CREATE MAP (FOR CHECK) (FOR ACTUAL GAME)
 static int	save_line_in_map(t_game *game, char *line);
 // static int manage_temp(t_game *game, char *line);

@@ -67,25 +67,35 @@ int	close_window(t_game *game)
 	return (0);
 }
 
-int	controls_working(int command, t_game *game)
+// void init_display(t_game *game)
+// {
+//     game->dpy = XOpenDisplay(NULL);
+//     if (!game->dpy)
+//     {
+//         fprintf(stderr, "Unable to open X display\n");
+//         exit(1);
+//     }
+//}
+
+int	controls_working(int keysym, t_game *game)
 {
-	if (command == 100)
+	if (keysym == XK_d)
 	{
 		move_right(game);
 	}
-	else if (command == 97)
+	else if (keysym == XK_a)
 	{
 		move_left(game);
 	}
-	else if (command == 119)
+	else if (keysym == XK_w)
 	{
 		move_up(game);
 	}
-	else if (command == 115)
+	else if (keysym == XK_s)
 	{
 		move_down(game);
 	}
-	else if (command == 53)
+	else if (keysym == XK_Escape)
 	{
 		close_window(game);
 	}
@@ -98,4 +108,5 @@ void	run_game(t_game *game)
 	mlx_key_hook(game->win, controls_working, game);
 	mlx_hook(game->win, 17, 0, close_window, game);
 	mlx_loop(game->mlx);
+	// XCloseDisplay(game->dpy);
 }
