@@ -39,10 +39,6 @@ all: $(NAME)
 $(PRINTF_OBJS): $(PRINTF_SRCS)
 	@make -C $(PRINTF_DIR)
 
-# Rule to compile all .c files in the logic directory to .o files
-# $(LOGIC_DIR)%.o: $(LOGIC_DIR)%.c
-# 	$(CC) $(CFLAGS) $(INC) -c $< -o $@
-
 $(MLX_LIB):
 	@make -C $(MLX_PATH)
 

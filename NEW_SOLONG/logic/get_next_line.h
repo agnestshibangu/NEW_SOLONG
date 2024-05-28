@@ -77,24 +77,6 @@ typedef struct s_game
     t_img       img; 
 }               t_game;
 
-// #include "./gnl_utils.c"
-// #include "./gnl.c"
-// #include "./init.c"
-// #include "./init_window.c"
-
-// #include "./checkmap.c"
-// #include "./checkmap2.c"
-// #include "./checkmap3.c"
-
-// #include "./floodfill.c"
-
-// #include "./map.c"
-// #include "./free.c"
-
-// #include "./controls.c"
-// #include "./controls2.c"
-
-
 // LIBFT UTILS
 size_t	ft_strlen(const char *str);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
